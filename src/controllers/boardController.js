@@ -1,15 +1,12 @@
 import { StatusCodes } from 'http-status-codes'
-
-const createNew = async (req, res) => {
+import { boardService } from '~/services/boardService'
+const createNew = async (req, res, next) => {
   try {
     // Dieu huong du lieu sang tang Service
+    const createNewBoard = await boardService.createNew(req.body)
     // Co ket qua tra ve phia client
-    res.status(StatusCodes.CREATED).json({ message:'POS from controller' })
-  } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      errors: error.message
-    })
-  }
+    res.status(StatusCodes.CREATED).json(createNewBoard)
+  } catch (error) {next(error)}
 }
 export const boardController = {
   createNew
