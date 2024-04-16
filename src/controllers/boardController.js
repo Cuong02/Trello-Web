@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes'
 
-const createNew = async (req, res, next) => {
+const createNew = async (req, res) => {
   try {
     // Dieu huong du lieu sang tang Service
     // Co ket qua tra ve phia client
