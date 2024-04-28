@@ -19,9 +19,7 @@ const createNew = async (req, res, next) => {
     // Validate du lieu xong thi cho request di tiep
     next()
   } catch (error) {
-    const errorMessage = new Error(error).message
-    const customError = new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, errorMessage)
-    next(customError)
+    next(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, new Error(error).message))
   }
 }
 

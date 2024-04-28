@@ -18,13 +18,26 @@ const BOARD_COLLECTION_SCHEMA = Joi.object({
 
 const createNew = async (data) => {
   try {
-    return await GET_DB().collection(BOARD_COLLECTION_NAME).insertOne(await validationData(data))
+    const a= await GET_DB().collection(BOARD_COLLECTION_NAME).insertOne(await validationData(data))
+    console.log( a )
+    return a
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+const findOneById = async (id) => {
+  try {
+    const kq = await GET_DB().collection(BOARD_COLLECTION_NAME).findOne({
+      _id: new ObjectId(id)
+    })
+    return kq
   } catch (error) {
     throw new Error(error)
   }
 }
 
-const findOneById = async (id) => {
+// query tổng hợp(aggregate) để lấy toàn bộ Columns và cards thuộc về Bỏad
+const getDetails = async (id) => {
   try {
     const kq = await GET_DB().collection(BOARD_COLLECTION_NAME).findOne({
       _id: new ObjectId(id)
@@ -43,5 +56,6 @@ export const boardModel = {
   BOARD_COLLECTION_NAME,
   BOARD_COLLECTION_SCHEMA,
   createNew,
-  findOneById
+  findOneById,
+  getDetails
 }

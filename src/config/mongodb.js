@@ -10,8 +10,16 @@ const mongoClientInstance = new MongoClient(env.MONGODB_URI, {
     strict: true,
     deprecationErrors: true }
 })
-export const CLOSE_DB = async() => {await mongoClientInstance.close()}
+export const CLOSE_DB = async() => {
+  await mongoClientInstance.close()
+}
 // Ket noi toi MongoDB
-export const CONNECT_DB = async() => {await mongoClientInstance.connect(); trelloDatabaseInstance= mongoClientInstance.db(env.DB_NAME)}
+export const CONNECT_DB = async() => {
+  await mongoClientInstance.connect()
+  trelloDatabaseInstance= mongoClientInstance.db(env.DB_NAME)
+}
 // Sau khi connect thanh cong toi MongoDb thi su dung ham GET_DB export nhieu noi trong code
-export const GET_DB = () => {if (!trelloDatabaseInstance) throw new Error('Must connect to DB first') ;return trelloDatabaseInstance}
+export const GET_DB = () => {
+  if (!trelloDatabaseInstance) throw new Error('Must connect to DB first')
+  return trelloDatabaseInstance
+}
