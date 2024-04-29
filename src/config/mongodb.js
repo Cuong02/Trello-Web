@@ -5,6 +5,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb'
 
 // Khởi tạo 1 đối tượng trelloDatabaseInstance ban đầu là null
 let trelloDatabaseInstance = null
+
 // Khởi tạo một đối tượng Client Instance để connect tới MongoDB
 const mongoClientInstance = new MongoClient(env.MONGODB_URI, {
   serverApi : {
