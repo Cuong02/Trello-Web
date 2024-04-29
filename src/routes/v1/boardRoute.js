@@ -7,12 +7,18 @@ const Router = express.Router()
 
 Router.route('/')
   .get((req, res) => {
-    res.status(StatusCodes.OK).json({ message:'Get: ok' })
+    res.status(StatusCodes.OK).json({
+      message: 'GET: API get list boards'
+    })
   })
   .post(boardValidation.createNew, boardController.createNew)
 
 Router.route('/:id')
   .get(boardController.getDetails)
-  .put()
+  .put(boardValidation.update, boardController.update)
+
+// API hỗ trợ việc di chuyển Card giữa các Column khác nhau trong một Board
+Router.route('/supports/moving_card')
+  .put(boardValidation.moveCardToDifferentColumn, boardController.moveCardToDifferentColumn)
 
 export const boardRoute = Router
