@@ -10,4 +10,3 @@ export const BOARD_TYPES = {
   PRIVATE: 'private'
 }
 
-export const API_ROOT = 'https://trello-web-uht4.onrender.com/'
