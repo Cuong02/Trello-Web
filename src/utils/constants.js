@@ -1,7 +1,7 @@
 
 // Những domain được phép truy cập tới tài nguyen của Server
 export const WHITELIST_DOMAINS = [
-  'http://localhost:5173'
+  // 'http://localhost:5173'
   // sau này sẽ deploy lên domain chính thức
 ]
 
