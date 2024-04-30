@@ -23,9 +23,16 @@ const START_SERVER = () => {
   //Middleware xử lí lỗi tập trung
   app.use(errorHandlingMiddleware)
 
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(`3. helloo ${env.AUTHOR}, Back-end Server is running successfully at Host http://${ env.APP_HOST }:${ env.APP_PORT }/`)
-  })
+  if (env.BUILD_MODE === 'production') {
+    app.listen(process.env.PORT, () => {
+      console.log(`Production 3. helloo ${env.AUTHOR}, Back-end Server is running successfully at Host http://${ process.env.PORT }/`)
+    })
+  } else {
+    app.listen(env.APP_PORT, env.APP_HOST, () => {
+      console.log(`DEV 3. helloo ${env.AUTHOR}, Back-end Server is running successfully at Host http://${ env.APP_HOST }:${ env.APP_PORT }/`)
+    })
+  }
+
 
   // Thực hiện các tác vụ cleanup trước khi dừng server
   exitHook(() => {
@@ -50,12 +57,3 @@ const START_SERVER = () => {
   }
 })()
 
-// Chỉ khi kết nối tới Database thành công thì mới start server backend lên
-// console.log('1. Connecting to MongoDB Cloud Atlas..')
-// CONNECT_DB()
-//   .then(() => console.log('2. Connected to MongoDB Cloud Atlas!'))
-//   .then(() => START_SERVER())
-//   .catch(error => {
-//     console.error(error)
-//     process.exit(0)
-//   })
