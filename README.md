@@ -33,6 +33,6 @@ Open Config & rename .env.example to .env
 
 ## Preview
 
-<img src="https://github.com/Cuong02/Trello-Web/blob/master/src/utils/trello-web.png" alt="Light Mode" width="90%">
+<img src="https://github.com/Cuong02/Trello-Web/blob/master/src/utils/trello-web.png" alt="Light Mode" width="100%">
 
 Thanks for watching!
