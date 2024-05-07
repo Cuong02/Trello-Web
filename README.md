@@ -31,4 +31,8 @@ Open Config & rename .env.example to .env
 
 > npm run dev
 
+## Preview
+
+<img  src="https://github.com/Cuong02/Trello-Web/tree/master/src/utils/trello-web.png"  alt="Light Mode"  width="90%"></img>
+
 Thanks for watching!
